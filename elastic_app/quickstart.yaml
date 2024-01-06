@@ -34,3 +34,10 @@ spec:
               - percentages
               - normalized_percentages
             period: 10s
+    outputs:
+      default:
+        type: elasticsearch
+        hosts:
+          - "https://my-custom-elasticsearch-cluster.cloud.elastic.co:9243"
+        password: elastic
+        username: Uh3MGr7u1CGzPDggTykqnut2
