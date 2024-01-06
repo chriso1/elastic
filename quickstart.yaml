@@ -22,7 +22,7 @@ spec:
             name: system
             version: 0.9.1
         data_stream:
-          namespace: default
+          namespace: elastic-system
         streams:
           - id: system/metrics-system.cpu
             data_stream:
