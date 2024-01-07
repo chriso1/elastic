@@ -1,0 +1,55 @@
+apiVersion: agent.k8s.elastic.co/v1alpha1
+kind: Agent
+metadata:
+  name: quickstart
+spec:
+  version: 8.11.3
+  daemonSet:
+    podTemplate:
+      spec:
+        securityContext:
+          runAsUser: 0
+  config:
+    outputs:
+      default:
+        type: elasticsearch
+        hosts:
+          - 'https://8cda7ec3591a418a85ed8cfc5aa48ad8.us-east-1.aws.found.io:443'
+        api_key: 'l1Vs3IwBfRClfvNZjL0X:-oa5-b5MQsq_4hZeQ8Aoig'
+    inputs:
+      - id: system-logs-4c44e86d-e3c6-4c5d-9719-9cad93cee597
+        type: logfile
+        data_stream:
+          namespace: elastic-system
+        streams:
+          - id: logfile-system.auth-4c44e86d-e3c6-4c5d-9719-9cad93cee597
+            data_stream:
+              dataset: system.auth
+              type: logs
+            paths:
+              - /var/log/auth.log*
+              - /var/log/secure*
+            exclude_files:
+              - .gz$
+            multiline:
+              pattern: ^s
+              match: after
+            tags:
+              - system-auth
+            processors:
+              - add_locale: null
+          - id: logfile-system.syslog-4c44e86d-e3c6-4c5d-9719-9cad93cee597
+            data_stream:
+              dataset: system.syslog
+              type: logs
+            paths:
+              - /var/log/messages*
+              - /var/log/syslog*
+              - /var/log/system*
+            exclude_files:
+              - .gz$
+            multiline:
+              pattern: ^s
+              match: after
+            processors:
+              - add_locale: null
