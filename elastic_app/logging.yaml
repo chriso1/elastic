@@ -15,14 +15,14 @@ spec:
         type: elasticsearch
         hosts:
           - 'https://8cda7ec3591a418a85ed8cfc5aa48ad8.us-east-1.aws.found.io:443'
-        api_key: 'l1Vs3IwBfRClfvNZjL0X:-oa5-b5MQsq_4hZeQ8Aoig'
+        api_key: 'P1Zb5owBfRClfvNZawhb:6AVZ2FPYRfyqeX5cGoGTTA'
     inputs:
-      - id: system-logs-4c44e86d-e3c6-4c5d-9719-9cad93cee597
+      - id: system-logs-5e99726f-a126-4b28-9c54-ece20d58fc8c
         type: logfile
         data_stream:
           namespace: elastic-system
         streams:
-          - id: logfile-system.auth-4c44e86d-e3c6-4c5d-9719-9cad93cee597
+          - id: logfile-system.auth-5e99726f-a126-4b28-9c54-ece20d58fc8c
             data_stream:
               dataset: system.auth
               type: logs
@@ -38,7 +38,7 @@ spec:
               - system-auth
             processors:
               - add_locale: null
-          - id: logfile-system.syslog-4c44e86d-e3c6-4c5d-9719-9cad93cee597
+          - id: logfile-system.syslog-5e99726f-a126-4b28-9c54-ece20d58fc8c
             data_stream:
               dataset: system.syslog
               type: logs
